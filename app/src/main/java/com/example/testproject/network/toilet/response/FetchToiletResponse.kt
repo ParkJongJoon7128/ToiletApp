@@ -1,7 +1,14 @@
 package com.example.testproject.network.toilet.response
 
+import com.google.gson.annotations.SerializedName
+
 data class FetchToiletResponse(
+    @SerializedName("code")
     val code: String? = null,
+    val data: ArrayList<ToiletData>
+)
+
+data class ToiletData(
     val PBCTLT_PLC_NM: String? = null,
     val REFINE_ROADNM_ADDR: String? = null,
     val REFINE_LOTNO_ADDR: String? = null,

@@ -88,8 +88,12 @@ dependencies {
     implementation("com.google.code.gson:gson:$gson_version")
 
     // Dagger & Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    implementation("com.google.dagger:hilt-android-compiler:2.44")
+    val dagger_hilt_version = "2.50"
+    implementation("com.google.dagger:hilt-android:$dagger_hilt_version")
+    kapt("com.google.dagger:hilt-android-compiler:$dagger_hilt_version")
+
+    // Hilt Navigation
+    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
 
     // AppCompat
     val appcompat_version = "1.6.1"
