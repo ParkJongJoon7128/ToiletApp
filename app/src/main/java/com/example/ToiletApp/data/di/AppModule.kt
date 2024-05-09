@@ -1,6 +1,7 @@
 package com.example.ToiletApp.data.di
 
 import com.example.ToiletApp.data.api.ToiletService
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +17,7 @@ import javax.inject.Singleton
 object AppModule {
 
     // Base URL
-    private const val baseUrl = "https://openapi.gg.go.kr/Publtolt/"
+    private const val baseUrl = "https://openapi.gg.go.kr/"
 
     // Api Key
     private const val apiKey = "172e4fdad76d4b6aa8f34ad805d9dfb3"
@@ -36,8 +37,9 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        val gson = GsonBuilder().setLenient().create()
         return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
             .baseUrl(baseUrl)
             .build()

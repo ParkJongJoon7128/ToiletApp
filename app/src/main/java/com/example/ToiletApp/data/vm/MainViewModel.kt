@@ -42,31 +42,4 @@ class MainViewModel @Inject constructor(
             }
         }
     }
-
-
-//    private val _email =  MutableStateFlow("")
-//    private val _password = MutableStateFlow("")
-//    private val _autoLoginClicked = MutableStateFlow(false)
-//    private val _pwdVisibilityClicked = MutableStateFlow(false)
-//
-//    val email: StateFlow<String> = _email.asStateFlow()
-//    val password: StateFlow<String> = _password.asStateFlow()
-//    val autoLoginClicked: StateFlow<Boolean> = _autoLoginClicked.asStateFlow()
-//    val pwdVisibilityClicked: StateFlow<Boolean> = _pwdVisibilityClicked.asStateFlow()
-//
-//    fun setEmail(email: String) {
-//        _email.value = email
-//    }
-//
-//    fun setPassWord(password: String) {
-//        _password.value = password
-//    }
-//
-//    fun setAutoLoginClicked() {
-//        _autoLoginClicked.value = !_autoLoginClicked.value
-//    }
-//
-//    fun setPwdVisibilityClicked() {
-//        _pwdVisibilityClicked.value = !_pwdVisibilityClicked.value
-//    }
 }

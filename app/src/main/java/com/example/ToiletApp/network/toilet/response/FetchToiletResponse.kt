@@ -1,10 +1,6 @@
 package com.example.ToiletApp.network.toilet.response
 
-import com.google.gson.annotations.SerializedName
-
 data class FetchToiletResponse(
-    @SerializedName("code")
-    val code: String? = null,
     val data: ArrayList<ToiletData>
 )
 

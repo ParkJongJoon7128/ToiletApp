@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface ToiletService {
 
-    @GET("/")
+    @GET("/Publtolt/")
     fun requestToilet(): Call<FetchToiletResponse>
 }
