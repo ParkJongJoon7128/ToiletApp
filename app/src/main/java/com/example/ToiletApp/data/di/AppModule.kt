@@ -1,7 +1,10 @@
 package com.example.ToiletApp.data.di
 
 import com.example.ToiletApp.data.api.ToiletService
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.tickaroo.tikxml.TikXml
+import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,9 +40,10 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val gson = GsonBuilder().setLenient().create()
+        val parser = TikXml.Builder().exceptionOnUnreadXml(false).build()
+
         return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(TikXmlConverterFactory.create(parser))
             .client(okHttpClient)
             .baseUrl(baseUrl)
             .build()

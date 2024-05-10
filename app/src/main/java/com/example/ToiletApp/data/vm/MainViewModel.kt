@@ -33,8 +33,8 @@ class MainViewModel @Inject constructor(
 
             when(result){
                 is APIResponse.Success -> {
-                    _toiletResponseList.emit(result.data!!.data)
-                    Log.d("readToilet", "readToilet: ${result.data.data}")
+                    _toiletResponseList.emit(result.data!!.row)
+                    Log.d("readToilet", "readToilet: ${result.data.row}")
                 }
                 is APIResponse.Error -> {
                     Log.d("readToilet", "readToilet: ${result.message}")

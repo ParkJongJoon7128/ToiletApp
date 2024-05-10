@@ -73,7 +73,7 @@ dependencies {
     // Retrofit
     val retrofit_version = "2.11.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
-    implementation ("com.squareup.retrofit2:converter-gson:$retrofit_version")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
 
     // OkHttp
     val okhttp_version = "4.12.0"
@@ -93,11 +93,20 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:$dagger_hilt_version")
 
     // Hilt Navigation
-    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
+    val hilt_navigation_fragment_version = "1.0.0"
+    implementation("androidx.hilt:hilt-navigation-fragment:$hilt_navigation_fragment_version")
 
     // AppCompat
     val appcompat_version = "1.6.1"
     implementation("androidx.appcompat:appcompat:$appcompat_version")
+
+    // TikXML
+    val tikxml_version = "0.8.13"
+    implementation("com.tickaroo.tikxml:annotation:$tikxml_version")
+    implementation("com.tickaroo.tikxml:core:$tikxml_version")
+    implementation("com.tickaroo.tikxml:retrofit-converter:$tikxml_version")
+    kapt("com.tickaroo.tikxml:processor:$tikxml_version")
+
 }
 
 kapt {
