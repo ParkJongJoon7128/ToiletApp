@@ -18,10 +18,10 @@ class MainViewModel @Inject constructor(
     private val ToiletRepository: ToiletRepository
 ) : ViewModel() {
 
-    private val _toiletResponseList = MutableStateFlow<List<ToiletData>>(emptyList());
+    private val _toiletList = MutableStateFlow<List<ToiletData>>(emptyList());
 
 
-    val toiletResponseList = _toiletResponseList.asStateFlow()
+    val toiletList = _toiletList.asStateFlow()
 
     init {
         readToilet()
@@ -33,7 +33,7 @@ class MainViewModel @Inject constructor(
 
             when(result){
                 is APIResponse.Success -> {
-                    _toiletResponseList.emit(result.data!!.row)
+                    _toiletList.emit(result.data!!.row)
                     Log.d("readToilet", "readToilet: ${result.data.row}")
                 }
                 is APIResponse.Error -> {
