@@ -1,5 +1,6 @@
 ## Skills
 - Android
+- Kotlin
 - Jetpack Compose
 - Retrofit
 - ViewModel
