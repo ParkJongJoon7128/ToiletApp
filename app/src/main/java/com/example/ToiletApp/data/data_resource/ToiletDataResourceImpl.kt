@@ -11,6 +11,11 @@ class ToiletDataResourceImpl @Inject constructor(
     private val toiletService: ToiletService
 ) : ToiletDataResource {
     override suspend fun readToilet(): Call<FetchToiletResponse> {
-        return toiletService.requestToilet()
+        return toiletService.requestToilet(
+            key = "172e4fdad76d4b6aa8f34ad805d9dfb3",
+            type = "xml",
+            pageIndex = 1,
+            pageSize = 1000
+        )
     }
 }
