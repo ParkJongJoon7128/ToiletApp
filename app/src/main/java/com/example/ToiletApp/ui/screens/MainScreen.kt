@@ -62,7 +62,11 @@ fun ToiletList(toiletList: List<ToiletData>, routeAction: RouteAction) {
 fun ToiletItem(toilet: ToiletData, routeAction: RouteAction) {
     Row(modifier = Modifier
         .clickable {
-            routeAction.customNavTo(NAV_Route.Test, toilet.PBCTLT_PLC_NM)
+            routeAction.customNavTo2(
+                NAV_Route.Test,
+                toilet.PBCTLT_PLC_NM,
+                toilet.MANAGE_INST_NM
+            )
         }
         .background(Color.LightGray)
         .fillMaxWidth()

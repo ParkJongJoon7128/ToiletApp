@@ -16,7 +16,7 @@ import com.example.ToiletApp.ui.screens.TestScreen
 
 enum class NAV_Route(val routeName: String, val description: String) {
     MAIN(routeName = "MAIN", description = "메인화면"), Test(
-        routeName = "Test/{value}", description = "테스트"
+        routeName = "Test/{value1}/{value2}", description = "테스트"
     )
 }
 
@@ -34,9 +34,21 @@ class RouteAction(navHostController: NavHostController) {
     // 값 전달 용 함수
     // NAV_Route = destination(=목적지)
     // value = 전달할 값
-    val customNavTo: (NAV_Route, String?) -> Unit = { route, value ->
+    val customNavTo1: (NAV_Route, String?) -> Unit = { route, value ->
         val routeName =
             if (value != null) route.routeName.replace("{value}", value) else route.routeName
+
+        navHostController.navigate(routeName) {
+            popUpTo(route.routeName) {
+                inclusive = true
+            }
+        }
+    }
+
+    val customNavTo2: (NAV_Route, String?, String?) -> Unit = { route, value1, value2 ->
+        val routeName =
+            if (value1 != null && value2 != null) route.routeName.replace("{value1}", value1)
+                .replace("{value2}", value2) else route.routeName
 
         navHostController.navigate(routeName) {
             popUpTo(route.routeName) {
@@ -75,14 +87,18 @@ fun NavigationGraph(startRoute: NAV_Route = NAV_Route.MAIN) {
         composable(
             NAV_Route.Test.routeName,
             // 전달받을 값(arguments) 선언
-            arguments = listOf(navArgument("value") { type = NavType.StringType })
+            arguments = listOf(
+                navArgument("value1") { type = NavType.StringType },
+                navArgument("value2") { type = NavType.StringType }
+            ),
         ) {
 
             // 전달받을 값(arguments) 선언할때 사용한 name값과 key값 일치 시켜야 됨
             // 일치할 시: value 값 전달
             // 불일치할 시: 빈 문자열("")값 전달
-            val value = it.arguments?.getString("value") ?: ""
-            TestScreen(routeAction = routeAction, value = value)
+            val value1 = it.arguments?.getString("value1") ?: ""
+            val value2 = it.arguments?.getString("value2") ?: ""
+            TestScreen(routeAction = routeAction, value1 = value1, value2 = value2)
         }
 
     }
