@@ -41,33 +41,34 @@ fun MainScreen(vm: MainViewModel = hiltViewModel(), routeAction: RouteAction) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        ToiletList(toiletList = toiletList.value)
+        ToiletList(toiletList = toiletList.value, routeAction = routeAction)
     }
 }
 
 @Composable
-fun ToiletList(toiletList: List<ToiletData>) {
+fun ToiletList(toiletList: List<ToiletData>, routeAction: RouteAction) {
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         items(items = toiletList) {
-            ToiletItem(toilet = it)
+            ToiletItem(toilet = it, routeAction = routeAction)
         }
     }
 }
 
 @Composable
-fun ToiletItem(toilet: ToiletData) {
-    Row(
-        modifier = Modifier
-            .background(Color.LightGray)
-            .fillMaxWidth()
-            .padding(24.dp),
+fun ToiletItem(toilet: ToiletData, routeAction: RouteAction) {
+    Row(modifier = Modifier
+        .clickable {
+            routeAction.customNavTo(NAV_Route.Test, toilet.PBCTLT_PLC_NM)
+        }
+        .background(Color.LightGray)
+        .fillMaxWidth()
+        .padding(24.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
-    ) {
+        horizontalArrangement = Arrangement.SpaceBetween) {
         Text(text = "${toilet.PBCTLT_PLC_NM}")
     }
     Spacer(modifier = Modifier.padding(vertical = 4.dp))

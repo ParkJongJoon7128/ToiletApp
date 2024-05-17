@@ -20,6 +20,7 @@ class MainActivity: AppCompatActivity() {
         enableEdgeToEdge()
         setContent {
             TestProjectTheme {
+                // 네비게이션 탐색 그래프 호출
                 NavigationGraph()
             }
         }
