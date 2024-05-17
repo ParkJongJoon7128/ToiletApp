@@ -94,7 +94,9 @@ dependencies {
 
     // Hilt Navigation
     val hilt_navigation_fragment_version = "1.0.0"
+    val hilt_navigation_compose_version = "1.0.0"
     implementation("androidx.hilt:hilt-navigation-fragment:$hilt_navigation_fragment_version")
+    implementation("androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose_version")
 
     // AppCompat
     val appcompat_version = "1.6.1"
@@ -106,6 +108,10 @@ dependencies {
     implementation("com.tickaroo.tikxml:core:$tikxml_version")
     implementation("com.tickaroo.tikxml:retrofit-converter:$tikxml_version")
     kapt("com.tickaroo.tikxml:processor:$tikxml_version")
+
+    // Navigation
+    val nav_version = "2.7.7"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
 
 }
 
